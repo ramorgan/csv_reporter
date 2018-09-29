@@ -1,3 +1,9 @@
-# exclude everything except directory foo/bar
+# ignore dir with data in it.
 !/archive/.gitkeep
 archive/*
+
+# ignore docksal.
+.docksal
+
+# ignore phpstorm config.
+.idea

@@ -26,10 +26,12 @@ class csv_report {
 
   protected $days = 30;
 
+  protected $dir = "../archive/";
+
 
 
   function __construct() {
-    $fp = fopen('archive/data.csv', 'r');
+    $fp = fopen($this->dir .'data.csv', 'r');
     $data = [];
 
     $this->header = fgetcsv($fp);
@@ -87,7 +89,7 @@ class csv_report {
   }
 
   protected function create_never_reported_csv() {
-    $fp = fopen('archive/never_reported_report.csv', 'w+');
+    $fp = fopen($this->dir .'never_reported_report.csv', 'w+');
     fputcsv($fp, $this->output_header);
     foreach ($this->empty_report as $item) {
       fputcsv($fp, $item);
@@ -96,7 +98,7 @@ class csv_report {
   }
 
   protected function create_thirty_days_out_csv() {
-    $fp = fopen('archive/thirty_days_out_report.csv', 'w+');
+    $fp = fopen($this->dir .'thirty_days_out_report.csv', 'w+');
     fputcsv($fp, $this->output_header);
     foreach ($this->report as $item) {
       fputcsv($fp, $item);
@@ -105,7 +107,7 @@ class csv_report {
   }
 
   protected function create_full_csv() {
-    $fp = fopen('archive/full_report.csv', 'w+');
+    $fp = fopen($this->dir .'full_report.csv', 'w+');
     fputcsv($fp, $this->output_header);
     foreach ($this->report as $item) {
       fputcsv($fp, $item);
